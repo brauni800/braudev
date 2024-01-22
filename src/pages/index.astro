@@ -1,6 +1,10 @@
 ---
-import Layout from '../layouts/Layout.astro'
+import Layout from 'src/layouts/Layout.astro'
+import CoverSection from "src/components/sections/Cover.astro"
+import ThemeMenu from "src/components/ThemeMenu"
 ---
 
-<Layout title="Welcome to Astro.">	
+<Layout title="braudev | Web Developer">
+	<CoverSection />
+	<ThemeMenu client:load/>
 </Layout>
