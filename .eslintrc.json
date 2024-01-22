@@ -2,6 +2,7 @@
   // ...
   "overrides": [
     {
+      "extends": ["plugin:tailwindcss/recommended"],
       // Define the configuration for `.astro` file.
       "files": ["*.astro"],
       // Enable this plugin
@@ -55,7 +56,10 @@
     // ...
     {
       "files": ["*.ts", "*.tsx", "*.mjs"],
-      "extends": "eslint-config-standard-with-typescript",
+      "extends": [
+        "eslint-config-standard-with-typescript",
+        "plugin:tailwindcss/recommended"
+      ],
       "parserOptions": {
         "project": "./tsconfig.json"
       },
