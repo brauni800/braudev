@@ -1,5 +1,6 @@
 import { removeTheme, setDarkTheme, setLightTheme } from 'src/utils/theme-switcher'
 import { capitalizeString } from 'src/utils/capitalize-string'
+import { getLangFromURL, useTranslations } from 'src/i18n'
 import { ThemeContext } from 'src/utils/hooks/theme'
 import { THEME_MODE } from 'src/types/theme.type'
 import { useState, type ReactNode } from 'react'
@@ -9,9 +10,11 @@ import MoonIcon from 'src/components/icons/MoonIcon'
 import SunIcon from 'src/components/icons/SunIcon'
 import Menu from 'src/components/menu/Menu'
 
-const THEME_TEXT: Record<THEME_MODE, string> = {
+type THEME_TYPES = 'system' | 'light' | 'dark'
+
+const THEME_TEXT: Record<THEME_MODE, THEME_TYPES> = {
   [THEME_MODE.SYSTEM]: 'system',
-  [THEME_MODE.WHITE]: 'white',
+  [THEME_MODE.WHITE]: 'light',
   [THEME_MODE.DARK]: 'dark'
 }
 
@@ -23,6 +26,8 @@ const THEME_ICON: Record<THEME_MODE, ReactNode> = {
 
 export default function ThemeButton () {
   const [themeMode, setThemeMode] = useState<THEME_MODE>(THEME_MODE.SYSTEM)
+  const lang = getLangFromURL(new URL(window.location.href))
+  const t = useTranslations(lang)
 
   const changeTheme = (theme: THEME_MODE) => () => {
     if (theme === THEME_MODE.WHITE) setLightTheme()
@@ -36,25 +41,25 @@ export default function ThemeButton () {
       <Menu>
         <Menu.MenuButton>
           {THEME_ICON[themeMode]}
-          <span>{capitalizeString(THEME_TEXT[themeMode])}</span>
+          <span>{capitalizeString(t(`theme.${THEME_TEXT[themeMode]}`))}</span>
         </Menu.MenuButton>
-        <Menu.MenuDropdown>
+        <Menu.MenuDropdown align='right'>
           <li>
             <MenuItemButton onClick={changeTheme(THEME_MODE.SYSTEM)}>
               <ComputerIcon className='w-4'/>
-              <span>Sistema</span>
+              <span>{t('theme.system')}</span>
             </MenuItemButton>
           </li>
           <li>
             <MenuItemButton onClick={changeTheme(THEME_MODE.DARK)}>
               <MoonIcon className='w-4'/>
-              <span>Obscuro</span>
+              <span>{t('theme.dark')}</span>
             </MenuItemButton>
           </li>
           <li>
             <MenuItemButton onClick={changeTheme(THEME_MODE.WHITE)}>
               <SunIcon className='w-4'/>
-              <span>Claro</span>
+              <span>{t('theme.light')}</span>
             </MenuItemButton>
           </li>
         </Menu.MenuDropdown>
