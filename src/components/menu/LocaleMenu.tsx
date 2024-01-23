@@ -15,7 +15,7 @@ export default function LocaleMenu () {
       <button aria-label='language'>
         {<CurrentIcon className='h-10'/>}
       </button>
-      <Menu.MenuDropdown>
+      <Menu.MenuDropdown align='right'>
         {Object.entries(languages).map(([lang, { Icon, label }]) => (
           <li key={lang}>
             <MenuItemLink href={getRelativeLocaleUrl(lang)}>
