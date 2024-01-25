@@ -1,12 +1,10 @@
 ---
-import CoverSection from "src/components/sections/Cover.astro"
-import LocaleMenu from "src/components/menu/LocaleMenu"
-import ThemeMenu from "src/components/menu/ThemeMenu"
+import HeroSection from "src/components/sections/HeroSection.astro"
+import NavBar from "src/components/NavBar.astro"
 import Layout from 'src/layouts/Layout.astro'
 ---
 
 <Layout title="braudev | Web Developer">
-	<CoverSection />
-	<ThemeMenu client:load/>
-	<LocaleMenu client:only/>
+	<NavBar />
+	<HeroSection />
 </Layout>

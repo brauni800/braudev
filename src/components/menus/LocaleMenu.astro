@@ -1,0 +1,32 @@
+---
+import { getLangFromURL, useTranslations } from "src/i18n"
+import { languages } from "src/i18n/translations"
+import { getRelativeLocaleUrl } from 'astro:i18n'
+
+import Menu from "src/components/menus/Menu.astro"
+
+const lang = getLangFromURL(Astro.url)
+const { Icon: CurrentIcon } = languages[lang]
+const t = useTranslations(lang)
+---
+
+<Menu align="right">
+  <button
+    title={t('locale.button.label')}
+    aria-label='language'
+    slot="toggle-button"
+  >
+    <CurrentIcon className='h-6'/>
+  </button>
+  {Object.entries(languages).map(([lang, { Icon, label }]) => (
+    <li>
+      <a
+        class="flex w-full items-center justify-start gap-2 rounded-md px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+        href={getRelativeLocaleUrl(lang)}
+      >
+        <Icon className="h-6"/>
+        <span>{label}</span>
+      </a>
+    </li>
+  ))}
+</Menu>

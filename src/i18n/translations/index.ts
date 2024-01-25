@@ -6,7 +6,7 @@ import MexicoFlagIcon from 'src/components/icons/flags/MexicoFlagIcon'
 
 export const translations = { en, es }
 
-export const languages = {
+export const languages = Object.freeze({
   en: {
     Icon: UnitedStatesFlagIcon,
     label: 'English'
@@ -15,6 +15,6 @@ export const languages = {
     Icon: MexicoFlagIcon,
     label: 'Español'
   }
-}
+})
 
 export const defaultLanguage = 'en'

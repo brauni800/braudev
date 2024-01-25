@@ -3,3 +3,10 @@ export enum THEME_MODE {
   WHITE,
   DARK
 }
+
+export type THEME_TYPE = 'light' | 'dark'
+
+export const THEME = Object.freeze({
+  LIGHT: 'light',
+  DARK: 'dark'
+})

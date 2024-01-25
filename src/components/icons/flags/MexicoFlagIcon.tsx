@@ -1,9 +1,9 @@
 export default function Icon (props: { className?: string }) {
   return (
     <svg
-      enableBackground="new 0 0 512 512"
+      enableBackground="new 0 80 512 350"
       className={props.className}
-      viewBox="0 0 512 512"
+      viewBox="0 80 512 350"
       xmlSpace="preserve"
       version="1.1"
     >

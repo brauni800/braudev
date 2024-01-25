@@ -1,5 +1,8 @@
 export const es = {
-  'theme.system': 'Sistema',
-  'theme.light': 'Claro',
-  'theme.dark': 'Obscuro'
+  'theme.mode.system': 'Sistema',
+  'theme.mode.light': 'Claro',
+  'theme.mode.dark': 'Obscuro',
+  'theme.button.label': 'Cambiar tema',
+  'locale.button.label': 'Cambiar idioma'
+
 }

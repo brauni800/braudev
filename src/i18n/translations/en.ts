@@ -1,5 +1,7 @@
 export const en = {
-  'theme.system': 'System',
-  'theme.light': 'Light',
-  'theme.dark': 'Dark'
+  'theme.mode.system': 'System',
+  'theme.mode.light': 'Light',
+  'theme.mode.dark': 'Dark',
+  'theme.button.label': 'Change theme',
+  'locale.button.label': 'Change language'
 }

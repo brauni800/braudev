@@ -1,0 +1,86 @@
+---
+import { getLangFromURL, useTranslations, type TranslationKeyProp } from 'src/i18n'
+import { THEME_COOKIE_KEY } from "src/utils/theme-switcher"
+import { THEME_MODE, THEME } from 'src/types/theme.type'
+
+import ComputerIcon from 'src/components/icons/ComputerIcon'
+import MoonIcon from 'src/components/icons/MoonIcon'
+import SunIcon from 'src/components/icons/SunIcon'
+import Menu from "src/components/menus/Menu.astro"
+
+const themes = Object.freeze({
+  [THEME_MODE.SYSTEM]: {
+    code: 'theme.mode.system',
+    Icon: ComputerIcon
+  },
+  [THEME_MODE.WHITE]: {
+    code: 'theme.mode.light',
+    Icon: SunIcon
+  },
+  [THEME_MODE.DARK]: {
+    code: 'theme.mode.dark',
+    Icon: MoonIcon
+  }
+})
+
+const lang = getLangFromURL(Astro.url)
+const t = useTranslations(lang)
+
+const currentThemeMode = Astro.cookies.get(THEME_COOKIE_KEY)?.value
+const currentTheme = currentThemeMode === THEME.LIGHT 
+  ? themes[THEME_MODE.WHITE] 
+  : currentThemeMode === THEME.DARK 
+    ? themes[THEME_MODE.DARK]
+    : themes[THEME_MODE.SYSTEM]
+---
+
+<Menu align='right'>
+  <button
+    class='flex items-center justify-center'
+    title={t('theme.button.label')}
+    slot="toggle-button"
+    aria-label='theme'
+  >
+    <currentTheme.Icon className='h-6'/>
+  </button>
+  <theme-menu-dropdown>
+    {Object.entries(themes).map(([mode, theme]) => {
+      const { Icon, code } = theme
+      return (
+        <li>
+          <button
+            class='flex w-full items-center justify-start gap-2 rounded-md px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700'
+            aria-label={mode}
+            data-menu-list
+          >
+            <Icon className="h-6"/>
+            <span>{t(code as TranslationKeyProp)}</span>
+          </button>
+        </li>
+      )
+    })}
+  </theme-menu-dropdown>
+</Menu>
+
+<script>
+  import { setDarkTheme, setLightTheme, removeTheme } from 'src/utils/theme-switcher'
+  import { THEME_MODE } from 'src/types/theme.type'
+
+  class ThemeMenuDropdown extends HTMLElement {
+    constructor () {
+      super()
+
+      const menuItemButtons = this.querySelectorAll<HTMLButtonElement>('button[data-menu-list]')
+      menuItemButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const themeMode = button.getAttribute('aria-label')
+          if (themeMode === THEME_MODE.DARK.toString()) setDarkTheme()
+          else if (themeMode === THEME_MODE.WHITE.toString()) setLightTheme()
+          else removeTheme()
+        })
+      })
+    }
+  }
+
+  customElements.define('theme-menu-dropdown', ThemeMenuDropdown)
+</script>

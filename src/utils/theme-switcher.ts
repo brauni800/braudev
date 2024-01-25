@@ -1,27 +1,33 @@
-const THEME_OPTIONS = Object.freeze({
-  LIGHT: 'light',
-  DARK: 'dark'
-})
+import { THEME } from 'src/types/theme.type'
+import Cookie from 'js-cookie'
+
+export const THEME_COOKIE_KEY = 'theme'
+
+export const isSystemTheme = () => !(THEME_COOKIE_KEY in Cookie.get()) && window.matchMedia('(prefers-color-scheme: dark)').matches
+export const isDarkTheme = () => Cookie.get(THEME_COOKIE_KEY) === THEME.DARK
 
 export const themeSwitcher = () => {
-  if (localStorage.theme === THEME_OPTIONS.DARK || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.documentElement.classList.add(THEME_OPTIONS.DARK)
+  if (isDarkTheme() || isSystemTheme()) {
+    document.documentElement.classList.add(THEME.DARK)
   } else {
-    document.documentElement.classList.remove(THEME_OPTIONS.DARK)
+    document.documentElement.classList.remove(THEME.DARK)
   }
 }
 
 export const setLightTheme = () => {
-  localStorage.setItem('theme', THEME_OPTIONS.LIGHT)
+  // window.localStorage.setItem(THEME_COOKIE_KEY, THEME.LIGHT)
+  Cookie.set(THEME_COOKIE_KEY, THEME.LIGHT)
   themeSwitcher()
 }
 
 export const setDarkTheme = () => {
-  localStorage.setItem('theme', THEME_OPTIONS.DARK)
+  // window.localStorage.setItem(THEME_COOKIE_KEY, THEME.DARK)
+  Cookie.set(THEME_COOKIE_KEY, THEME.DARK)
   themeSwitcher()
 }
 
 export const removeTheme = () => {
-  localStorage.removeItem('theme')
+  // window.localStorage.removeItem(THEME_COOKIE_KEY)
+  Cookie.remove(THEME_COOKIE_KEY)
   themeSwitcher()
 }
