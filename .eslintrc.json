@@ -37,6 +37,7 @@
       // Define the configuration for `<script>` tag.
       // Script in `<script>` is assigned a virtual file name with the `.js` extension.
       "files": ["**/*.astro/*.js", "*.astro/*.js"],
+      "extends": ["eslint-config-standard-with-typescript"],
       "env": {
         "browser": true,
         "es2020": true
