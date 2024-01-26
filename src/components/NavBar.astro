@@ -1,13 +1,13 @@
 ---
 import LocaleMenu from "src/components/menus/LocaleMenu.astro"
 import ThemeMenu from "src/components/menus/ThemeMenu.astro"
-import LogoIcon from "src/components/icons/LogoIcon"
+import LogoIcon from "src/assets/icons/LogoIcon.astro"
 ---
 
 <nav class="sticky top-0 z-10 h-14 bg-gray-50 p-4 transition-colors dark:bg-gray-800">
   <div class="mx-auto flex max-w-7xl items-center md:px-8">
     <a href="/">
-      <LogoIcon className="h-5"/>
+      <LogoIcon class="h-5"/>
     </a>
     <div class="flex grow items-center justify-end gap-4">
       <ThemeMenu />

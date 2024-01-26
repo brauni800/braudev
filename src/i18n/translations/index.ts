@@ -1,8 +1,8 @@
 import { en } from 'src/i18n/translations/en'
 import { es } from 'src/i18n/translations/es'
 
-import UnitedStatesFlagIcon from 'src/components/icons/flags/UnitedStatesFlagIcon'
-import MexicoFlagIcon from 'src/components/icons/flags/MexicoFlagIcon'
+import UnitedStatesFlagIcon from 'src/assets/icons/flags/UnitedStatesFlagIcon.astro'
+import MexicoFlagIcon from 'src/assets/icons/flags/MexicoFlagIcon.astro'
 
 export const translations = { en, es }
 

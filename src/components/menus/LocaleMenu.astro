@@ -16,7 +16,7 @@ const t = useTranslations(lang)
     aria-label='language'
     slot="toggle-button"
   >
-    <CurrentIcon className='h-6'/>
+    <CurrentIcon class='h-6'/>
   </button>
   {Object.entries(languages).map(([lang, { Icon, label }]) => (
     <li>
@@ -24,7 +24,7 @@ const t = useTranslations(lang)
         class="flex w-full items-center justify-start gap-2 rounded-md px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
         href={getRelativeLocaleUrl(lang)}
       >
-        <Icon className="h-6"/>
+        <Icon class="h-6"/>
         <span>{label}</span>
       </a>
     </li>

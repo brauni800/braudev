@@ -3,9 +3,9 @@ import { getLangFromURL, useTranslations, type TranslationKeyProp } from 'src/i1
 import { THEME_COOKIE_KEY } from "src/utils/theme-switcher"
 import { THEME_MODE, THEME } from 'src/types/theme.type'
 
-import ComputerIcon from 'src/components/icons/ComputerIcon'
-import MoonIcon from 'src/components/icons/MoonIcon'
-import SunIcon from 'src/components/icons/SunIcon'
+import ComputerIcon from 'src/assets/icons/ComputerIcon.astro'
+import MoonIcon from 'src/assets/icons/MoonIcon.astro'
+import SunIcon from 'src/assets/icons/SunIcon.astro'
 import Menu from "src/components/menus/Menu.astro"
 
 const themes = Object.freeze({
@@ -41,7 +41,7 @@ const currentTheme = currentThemeMode === THEME.LIGHT
     slot="toggle-button"
     aria-label='theme'
   >
-    <currentTheme.Icon className='h-6'/>
+    <currentTheme.Icon class='h-6'/>
   </button>
   <theme-menu-dropdown>
     {Object.entries(themes).map(([mode, theme]) => {
@@ -53,7 +53,7 @@ const currentTheme = currentThemeMode === THEME.LIGHT
             aria-label={mode}
             data-menu-list
           >
-            <Icon className="h-6"/>
+            <Icon class="h-6"/>
             <span>{t(code as TranslationKeyProp)}</span>
           </button>
         </li>
