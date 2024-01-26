@@ -23,61 +23,55 @@ const links = {
 }
 ---
 
-<section class="h-dvh pt-10 sm:pt-16 md:pt-0 2xl:pt-16">
-  <slot />
-
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="grid grid-cols-1 items-center md:grid-cols-2">
-      <div class="text-center md:text-left">
-        <h2 class="text-3xl font-bold leading-tight text-gray-800 dark:text-gray-50 sm:text-4xl lg:text-5xl">
-          {t('section.hero.welcome')} <br class="block sm:hidden" />Braulio
-        </h2>
-        <p class="mx-auto mt-3 max-w-lg text-xl leading-relaxed text-gray-600 dark:text-gray-200 md:mx-0 md:mt-8">
-          {t('section.hero.presentation.1')}
-          {differenceInYears(
-            lastExperience?.end_date ? new Date(lastExperience?.end_date) : new Date(),
-            new Date(firstExperience?.start_date!
-          ))}
-          {t('section.hero.presentation.1.5')}
-        </p>
-        <p class="mx-auto mb-3 max-w-lg text-xl leading-relaxed text-gray-600 dark:text-gray-200 md:mx-0 md:mb-8">
-          {t('section.hero.presentation.2')}
-        </p>
-        <div class="flex justify-center gap-4 text-white md:justify-start">
-          <a
-            class="inline-flex size-10 items-center justify-center rounded-full border-none bg-[#0077b5] outline-none hover:bg-[#0055b5] active:bg-[#0077b5]"
-            href={links.linkedIn}
-            title="LinkedIn"
-            target="_blank"
-          >
-            <LinkedInIcon />
-          </a>
-          <a
-            class="inline-flex size-10 items-center justify-center rounded-full border-none bg-[#333] outline-none hover:bg-[#383838] active:bg-[#383838]"
-            href={links.gitHub}
-            target="_blank"
-            title="GitHub"
-          >
-            <GitHubIcon />
-          </a>
-          <a
-            class="inline-flex size-10 items-center justify-center rounded-full border-none bg-[#03a9f4] outline-none hover:bg-[#03a1f4] active:bg-[#03a9f4]"
-            href={links.twitter}
-            target="_blank"
-            title="X"
-          >
-            <TwitterIcon />
-          </a>
-        </div>
-      </div>
-
-      <picture class="relative row-start-1 md:row-auto">
-        <Image
-          class='mx-auto w-96 md:mx-0 md:w-[500px]'
-          src={heroBannerImage}
-          alt='banner'
-        />
-      </picture>
+<section class="mx-auto box-border grid h-[calc(100dvh-3.5rem)] max-w-7xl grid-cols-1 content-center justify-between px-4 sm:pt-16 md:grid-cols-2 md:px-8 md:pt-0">
+  <div class="flex flex-col justify-center text-center md:text-left">
+    <h2 class="text-balance text-3xl font-bold leading-tight text-gray-800 dark:text-gray-50 sm:text-4xl lg:text-5xl">
+      {t('section.hero.welcome')} Braulio
+    </h2>
+    <p class="mx-auto mt-3 max-w-lg text-xl leading-relaxed text-gray-600 dark:text-gray-200 md:mx-0 md:mt-8">
+      {t('section.hero.presentation.1')}
+      {differenceInYears(
+        lastExperience?.end_date ? new Date(lastExperience?.end_date) : new Date(),
+        new Date(firstExperience?.start_date!
+      ))}
+      {t('section.hero.presentation.1.5')}
+    </p>
+    <p class="mx-auto mb-3 max-w-lg text-pretty text-xl leading-relaxed text-gray-600 dark:text-gray-200 md:mx-0 md:mb-8">
+      {t('section.hero.presentation.2')}
+    </p>
+    <div class="flex justify-center gap-4 text-white md:justify-start">
+      <a
+        class="inline-flex size-10 items-center justify-center rounded-full border-none bg-[#0077b5] outline-none hover:bg-[#0055b5] active:bg-[#0077b5]"
+        href={links.linkedIn}
+        title="LinkedIn"
+        target="_blank"
+      >
+        <LinkedInIcon />
+      </a>
+      <a
+        class="inline-flex size-10 items-center justify-center rounded-full border-none bg-[#333] outline-none hover:bg-[#383838] active:bg-[#383838]"
+        href={links.gitHub}
+        target="_blank"
+        title="GitHub"
+      >
+        <GitHubIcon />
+      </a>
+      <a
+        class="inline-flex size-10 items-center justify-center rounded-full border-none bg-[#03a9f4] outline-none hover:bg-[#03a1f4] active:bg-[#03a9f4]"
+        href={links.twitter}
+        target="_blank"
+        title="X"
+      >
+        <TwitterIcon />
+      </a>
     </div>
   </div>
+
+  <picture class="row-start-1 flex w-full justify-end md:row-auto">
+    <Image
+      class='mx-auto w-96 md:mx-0 md:w-[500px]'
+      src={heroBannerImage}
+      alt='banner'
+    />
+  </picture>
 </section>
