@@ -39,9 +39,9 @@ const links = {
     <p class="mx-auto mb-3 max-w-lg text-pretty text-xl leading-relaxed text-gray-600 dark:text-gray-200 md:mx-0 md:mb-8">
       {t('section.hero.presentation.2')}
     </p>
-    <div class="flex justify-center gap-4 text-white md:justify-start">
+    <div class="flex justify-center gap-4 text-gray-50 md:justify-start">
       <a
-        class="inline-flex size-10 items-center justify-center rounded-full border-none bg-[#0077b5] outline-none hover:bg-[#0055b5] active:bg-[#0077b5]"
+        class="inline-flex size-10 items-center justify-center rounded-full border-none bg-[#0077b5] outline-none transition-colors hover:bg-[#0055b5] active:bg-[#0077b5]"
         href={links.linkedIn}
         title="LinkedIn"
         target="_blank"
@@ -49,7 +49,7 @@ const links = {
         <LinkedInIcon />
       </a>
       <a
-        class="inline-flex size-10 items-center justify-center rounded-full border-none bg-[#333] outline-none hover:bg-[#383838] active:bg-[#383838]"
+        class="inline-flex size-10 items-center justify-center rounded-full border-none bg-[#333] outline-none transition-colors hover:bg-[#555] active:bg-[#555] dark:bg-gray-50 dark:text-[#333] dark:hover:bg-gray-300 dark:active:bg-gray-300"
         href={links.gitHub}
         target="_blank"
         title="GitHub"
@@ -57,7 +57,7 @@ const links = {
         <GitHubIcon />
       </a>
       <a
-        class="inline-flex size-10 items-center justify-center rounded-full border-none bg-[#03a9f4] outline-none hover:bg-[#03a1f4] active:bg-[#03a9f4]"
+        class="inline-flex size-10 items-center justify-center rounded-full border-none bg-[#03a9f4] outline-none transition-colors hover:bg-[#26baff] active:bg-[#26baff]"
         href={links.twitter}
         target="_blank"
         title="X"
