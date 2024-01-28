@@ -1,13 +1,30 @@
+import { screens } from 'tailwindcss/defaultTheme'
+import plugin from 'tailwindcss/plugin'
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   darkMode: 'class',
   theme: {
+    screens: {
+      xs: '475px',
+      ...screens
+    },
     extend: {
       transitionProperty: {
         filter: 'filter'
       },
       keyframes: {
+        show: {
+          from: {
+            opacity: 0,
+            scale: '25%'
+          },
+          to: {
+            opacity: 1,
+            scale: '100%'
+          }
+        },
         'fade-out': {
           '100%': {
             opacity: 0,
@@ -36,6 +53,18 @@ export default {
     }
   },
   plugins: [
-    require('tailwindcss-hero-patterns')
+    require('tailwindcss-hero-patterns'),
+    plugin(function ({ addComponents, theme }) {
+      addComponents({
+        '@keyframes show': theme('keyframes.show'),
+        '.scroll-show-animation': {
+          'view-timeline': '--scroll-show block',
+          'animation-timeline': '--scroll-show',
+          'animation-name': 'show',
+          'animation-range': 'entry 0% cover 30%',
+          'animation-fill-mode': 'both'
+        }
+      })
+    })
   ]
 }
