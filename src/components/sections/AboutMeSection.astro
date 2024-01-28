@@ -1,0 +1,12 @@
+---
+import { getLangFromURL, useTranslations } from "src/i18n"
+
+const lang = getLangFromURL(Astro.url)
+const t = useTranslations(lang)
+---
+
+<section>
+  <div class="mx-auto h-96 max-w-7xl px-10">
+    <h2 class="text-center text-4xl">{t('section.about-me.title')}</h2>
+  </div>
+</section>

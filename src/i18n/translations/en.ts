@@ -10,13 +10,17 @@ export const en = {
   'section.hero.presentation.2': 'Development of functional and simple sites, prioritizing user experience and efficiency.',
   'section.hero.about-me.1': 'Web developer with focus on React and Node.',
   'section.hero.about-me.2': 'I create simple and effective digital solutions to improve the user experience.',
-  'section.experience.uady.description.1': 'In my first job, I had the privilege of being part of the Information Technology team at the Autonomous University of Yucatan.',
+  'section.experience.uady.description.1': 'I had the privilege of being part of the Information Technology team at the Autonomous University of Yucatan.',
   'section.experience.uady.description.2': 'I contributed to the renovation of an existing educational platform, utilizing technologies such as C# and JavaScript.',
   'section.experience.uady.description.3': 'In this challenging modernization project, I closely collaborated with the team to implement significant improvements to the platform, enabling teachers to organize and manage their courses more efficiently.',
-  'section.experience.soldai.description.1': 'In my second job at SoldAI, an exciting start-up specializing in artificial intelligence, I took on the role of a front-end developer within a team dedicated to creating voice bots.',
+  'section.experience.soldai.description.1': 'An exciting start-up specializing in artificial intelligence, I took on the role of a front-end developer within a team dedicated to creating voice bots.',
   'section.experience.soldai.description.2': 'I developed attractive and functional interfaces using Vue.js, significantly contributing to providing exceptional user experiences.',
   'section.experience.soldai.description.3': 'Additionally, I ventured into back-end development with Node.js, expanding my skill set and being an integral part of developing innovative solutions in the thrilling field of artificial intelligence.',
-  'section.experience.dacodes.description.1': 'In my third job at DaCodes, a prominent custom software development company, I served as a front-end developer.',
+  'section.experience.dacodes.description.1': 'A prominent custom software development company, I served as a front-end developer.',
   'section.experience.dacodes.description.2': 'I collaborated on eight diverse projects, utilizing technologies like React.js, Vue.js, and Angular based on the specific needs of each project.',
-  'section.experience.dacodes.description.3': 'My focus was on creating attractive and functional user interfaces, contributing to the end-user experience, and working collaboratively with a multifunctional team to achieve success in each development.'
+  'section.experience.dacodes.description.3': 'My focus was on creating attractive and functional user interfaces, contributing to the end-user experience, and working collaboratively with a multifunctional team to achieve success in each development.',
+  'section.about-me.title': 'About me',
+  'section.about-me.1': '',
+  'section.about-me.2': '',
+  'section.about-me.3': ''
 }

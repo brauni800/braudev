@@ -10,18 +10,18 @@ const lang = getLangFromURL(Astro.url)
 const t = useTranslations(lang)
 ---
 
-<section class="relative mx-auto">
-  <div class="absolute left-8 top-5 h-[96%] border-spacing-3 rounded-[1%] border-2 border-solid border-bright-turquoise-700 dark:border-bright-turquoise-400 sm:left-24 md:left-1/2 md:-translate-x-1/2"/>
+<section class="relative">
+  <div class="absolute bottom-[1%] left-8 h-[96%] border-spacing-3 rounded-[1%] border-2 border-solid border-bright-turquoise-700 dark:border-bright-turquoise-400 sm:left-24 md:left-1/2 md:-translate-x-1/2"/>
   <Image
-    class="sticky -ml-8 top-1/2 z-{1} box-border max-w-32 rotate-180 transition-transform sm:left-[calc(2rem-1px)] md:left-1/2 md:translate-x-[calc(-50%+3px)]"
+    class="sticky -ml-[14px] top-1/2 z-{1} box-border max-w-24 rotate-180 transition-transform sm:left-[50px] md:left-1/2 md:-translate-x-1/2"
     src={experienceRocketImage}
     alt="rocket-timeline"
     id="rocket-timeline"
   />
 
-  <div class="h-full px-10">
+  <div class="mx-auto h-full max-w-7xl px-10">
     {experiences.toReversed().map((experience, index) => (
-      <article class="scroll-show-animation mb-8 grid w-full grid-cols-2 gap-8 first:mt-20 last:mb-20 md:gap-28">
+      <article class="scroll-show-animation mb-8 grid w-full grid-cols-2 gap-8 last:mb-0 md:gap-28">
         <div
           class:list={[
             "flex ml-12 sm:ml-32 col-span-full md:col-span-1 md:ml-auto",
@@ -37,7 +37,7 @@ const t = useTranslations(lang)
             <p class="mb-3 text-base font-bold text-bright-turquoise-700 dark:text-bright-turquoise-400">
               {format(experience.start_date, 'PP')} - {format(experience.end_date, 'PP')}
             </p>
-            <h4 class="mb-3 text-lg font-bold md:text-2xl">{experience.name}</h4>
+            <h3 class="mb-3 text-lg font-bold md:text-2xl">{experience.name}</h3>
             <p class="mb-2 text-pretty text-sm leading-snug text-opacity-100 md:text-base">
               {t(`${experience.description}.1` as TranslationKeyProp)}
             </p>
@@ -67,27 +67,9 @@ const t = useTranslations(lang)
     if (currentScrollTop > lastScrollTop) {
       // down
       rocket?.classList.add('rotate-180')
-
-      rocket?.classList.add('md:translate-x-[calc(-50%+3px)]')
-      rocket?.classList.remove('md:translate-x-[calc(-50%-3px)]')
-
-      rocket?.classList.remove('sm:left-[calc(2rem-1px)]')
-      rocket?.classList.add('sm:left-[calc(2rem+5px)]')
-
-      rocket?.classList.remove('-ml-8')
-      rocket?.classList.add('-ml-7')
     } else {
       // up
       rocket?.classList.remove('rotate-180')
-
-      rocket?.classList.remove('md:translate-x-[calc(-50%+3px)]')
-      rocket?.classList.add('md:translate-x-[calc(-50%-3px)]')
-
-      rocket?.classList.add('sm:left-[calc(2rem-1px)]')
-      rocket?.classList.remove('sm:left-[calc(2rem+5px)]')
-
-      rocket?.classList.add('-ml-8')
-      rocket?.classList.remove('-ml-7')
     }
 
     lastScrollTop = currentScrollTop;
