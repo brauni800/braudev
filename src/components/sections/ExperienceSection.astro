@@ -1,0 +1,108 @@
+---
+import { getLangFromURL, useTranslations, type TranslationKeyProp } from "src/i18n"
+import { Image } from "astro:assets"
+import { format } from "date-fns"
+
+import experienceRocketImage from "src/assets/images/experience-rocket.webp"
+import experiences from "src/assets/json/experience.json"
+
+const lang = getLangFromURL(Astro.url)
+const t = useTranslations(lang)
+---
+
+<section class="relative mx-auto">
+  <div class="absolute left-8 top-5 h-[96%] border-spacing-3 rounded-[1%] border-2 border-solid border-bright-turquoise-700 dark:border-bright-turquoise-400 sm:left-24 md:left-1/2 md:-translate-x-1/2"/>
+  <Image
+    class="sticky -ml-8 top-1/2 z-{1} box-border max-w-32 rotate-180 transition-transform sm:left-[calc(2rem-1px)] md:left-1/2 md:translate-x-[calc(-50%+3px)]"
+    src={experienceRocketImage}
+    alt="rocket-timeline"
+    id="rocket-timeline"
+  />
+
+  <div class="h-full px-10">
+    {experiences.toReversed().map((experience, index) => (
+      <article class="scroll-show-animation mb-8 grid w-full grid-cols-2 gap-8 first:mt-20 last:mb-20 md:gap-28">
+        <div
+          class:list={[
+            "flex ml-12 sm:ml-32 col-span-full md:col-span-1 md:ml-auto",
+            index % 2 !== 0 ? "md:justify-end" : "order-1"
+          ]}
+        >
+          <div
+            class:list={[
+              "w-full px-1 py-4 text-left md:w-3/4",
+              index % 2 !== 0 ? "md:text-right" : ""
+            ]}
+          >
+            <p class="mb-3 text-base font-bold text-bright-turquoise-700 dark:text-bright-turquoise-400">
+              {format(experience.start_date, 'PP')} - {format(experience.end_date, 'PP')}
+            </p>
+            <h4 class="mb-3 text-lg font-bold md:text-2xl">{experience.name}</h4>
+            <p class="mb-2 text-pretty text-sm leading-snug text-opacity-100 md:text-base">
+              {t(`${experience.description}.1` as TranslationKeyProp)}
+            </p>
+            <p class="mb-2 text-pretty text-sm leading-snug text-opacity-100 md:text-base">
+              {t(`${experience.description}.2` as TranslationKeyProp)}
+            </p>
+            <p class="text-pretty text-sm leading-snug text-opacity-100 md:text-base">
+              {t(`${experience.description}.3` as TranslationKeyProp)}
+            </p>
+          </div>
+        </div>
+        <div class="hidden md:block"/>
+      </article>
+    ))}
+  </div>
+</section>
+
+<script>
+  import throttle from "just-throttle";
+
+  let lastScrollTop = window.scrollY || document.documentElement.scrollTop;
+  
+  function handleScroll() {
+    const currentScrollTop = window.scrollY || document.documentElement.scrollTop;
+    const rocket = document.getElementById('rocket-timeline')
+
+    if (currentScrollTop > lastScrollTop) {
+      // down
+      rocket?.classList.add('rotate-180')
+
+      rocket?.classList.add('md:translate-x-[calc(-50%+3px)]')
+      rocket?.classList.remove('md:translate-x-[calc(-50%-3px)]')
+
+      rocket?.classList.remove('sm:left-[calc(2rem-1px)]')
+      rocket?.classList.add('sm:left-[calc(2rem+5px)]')
+
+      rocket?.classList.remove('-ml-8')
+      rocket?.classList.add('-ml-7')
+    } else {
+      // up
+      rocket?.classList.remove('rotate-180')
+
+      rocket?.classList.remove('md:translate-x-[calc(-50%+3px)]')
+      rocket?.classList.add('md:translate-x-[calc(-50%-3px)]')
+
+      rocket?.classList.add('sm:left-[calc(2rem-1px)]')
+      rocket?.classList.remove('sm:left-[calc(2rem+5px)]')
+
+      rocket?.classList.add('-ml-8')
+      rocket?.classList.remove('-ml-7')
+    }
+
+    lastScrollTop = currentScrollTop;
+  }
+
+  const throttledHandleScroll = throttle(handleScroll, 200);
+  let isScrolling = false
+
+  window.addEventListener('scroll', () => {
+    if (!isScrolling) {
+      window.requestAnimationFrame(() => {
+        throttledHandleScroll();
+        isScrolling = false;
+      });
+      isScrolling = true;
+    }
+  })
+</script>

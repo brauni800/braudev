@@ -2,16 +2,19 @@
   {
     "name": "Universidad Autónoma de Yucatán",
     "start_date": "2018-03-01",
-    "end_date": "2018-10-31"
+    "end_date": "2018-10-31",
+    "description": "section.experience.uady.description"
   },
   {
     "name": "SoldAI",
     "start_date": "2019-11-09",
-    "end_date": "2020-11-08"
+    "end_date": "2020-11-08",
+    "description": "section.experience.soldai.description"
   },
   {
     "name": "DaCodes",
     "start_date": "2020-11-09",
-    "end_date": "2024-01-15"
+    "end_date": "2024-01-15",
+    "description": "section.experience.dacodes.description"
   }
 ]

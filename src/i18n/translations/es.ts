@@ -9,5 +9,14 @@ export const es = {
   'section.hero.presentation.1.5': 'años.',
   'section.hero.presentation.2': 'Desarrollo sitios funcionales y simples, priorizando la experiencia del usuario y la eficiencia.',
   'section.hero.about-me.1': 'Desarrollador web con enfoque en React y Node.',
-  'section.hero.about-me.2': 'Creo soluciones digitales simples y efectivas para mejorar la experiencia del usuario.'
+  'section.hero.about-me.2': 'Creo soluciones digitales simples y efectivas para mejorar la experiencia del usuario.',
+  'section.experience.uady.description.1': 'En mi primer empleo, tuve el privilegio de formar parte del equipo de Tecnologías de la Información en la Universidad Autónoma de Yucatán.',
+  'section.experience.uady.description.2': 'Contribuí al proceso de renovación de una plataforma educativa existente, utilizando tecnologías como C# y JavaScript.',
+  'section.experience.uady.description.3': 'En este desafiante proyecto de modernización, trabajé estrechamente con el equipo para implementar mejoras significativas en la plataforma, permitiendo a los profesores organizar y gestionar sus cursos de manera más eficiente.',
+  'section.experience.soldai.description.1': 'En mi segundo empleo en SoldAI, una apasionante start-up especializada en inteligencia artificial, asumí el rol de desarrollador front-end dentro de un equipo dedicado a la creación de bots de voz.',
+  'section.experience.soldai.description.2': 'Desarrollé interfaces atractivas y funcionales utilizando Vue.js, contribuyendo significativamente a proporcionar experiencias de usuario excepcionales.',
+  'section.experience.soldai.description.3': 'Además, me aventuré en el desarrollo back-end con Node.js, ampliando mis habilidades y siendo parte integral del desarrollo de soluciones innovadoras en el emocionante campo de la inteligencia artificial.',
+  'section.experience.dacodes.description.1': 'En mi tercer empleo en DaCodes, una destacada empresa de desarrollo de software a medida, desempeñé el papel de desarrollador front-end.',
+  'section.experience.dacodes.description.2': 'Colaboré en ocho proyectos diversos, utilizando tecnologías como React.js, Vue.js y Angular según las necesidades específicas de cada proyecto.',
+  'section.experience.dacodes.description.3': 'Mi enfoque estuvo centrado en la creación de interfaces de usuario atractivas y funcionales, contribuyendo a la experiencia del usuario final y trabajando en colaboración con un equipo multi funcional para lograr el éxito en cada desarrollo.'
 }
