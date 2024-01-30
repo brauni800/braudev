@@ -1,0 +1,18 @@
+---
+import { getLangFromURL, useTranslations } from "src/i18n"
+
+import AstroIcon from "src/assets/icons/technologies/AstroIcon.astro"
+import VercelIcon from "src/assets/icons/technologies/VercelIcon.astro"
+
+const lang = getLangFromURL(Astro.url)
+const t = useTranslations(lang)
+---
+
+<footer class="py-20">
+  <p class="mx-auto flex w-fit max-w-7xl items-center justify-center gap-2 rounded-lg border-2 border-solid border-bright-turquoise-400 p-4">
+    {t('footer.built-with')}
+    <AstroIcon class="h-4"/>
+    {t('footer.deployed-in')}
+    <VercelIcon class="h-4"/>
+  </p>
+</footer>
