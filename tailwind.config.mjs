@@ -15,6 +15,14 @@ export default {
         filter: 'filter'
       },
       keyframes: {
+        swing: {
+          '0%, 100%': {
+            transform: 'rotate(12deg)'
+          },
+          '50%': {
+            transform: 'rotate(32deg)'
+          }
+        },
         show: {
           from: {
             opacity: 0,
@@ -33,7 +41,8 @@ export default {
         }
       },
       animation: {
-        'fade-out': 'fade-out 150ms forwards'
+        'fade-out': 'fade-out 150ms forwards',
+        swing: 'swing ease-in-out 1s infinite'
       },
       colors: {
         'bright-turquoise': {
