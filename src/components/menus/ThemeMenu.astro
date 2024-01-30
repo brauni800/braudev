@@ -27,11 +27,6 @@ const lang = getLangFromURL(Astro.url)
 const t = useTranslations(lang)
 
 const currentThemeMode = Astro.cookies.get(THEME_COOKIE_KEY)?.value
-const currentTheme = currentThemeMode === THEME.LIGHT 
-  ? themes[THEME_MODE.WHITE] 
-  : currentThemeMode === THEME.DARK 
-    ? themes[THEME_MODE.DARK]
-    : themes[THEME_MODE.SYSTEM]
 ---
 
 <theme-menu-dropdown>
@@ -42,7 +37,27 @@ const currentTheme = currentThemeMode === THEME.LIGHT
       slot="toggle-button"
       aria-label='theme'
     >
-      <currentTheme.Icon class='h-6'/>
+      <ComputerIcon
+        data-toggle-button-icon={THEME_MODE.SYSTEM}
+        class={[
+          Boolean(currentThemeMode) ? 'hidden' : '',
+          'h-6',
+        ].join(' ')}
+      />
+      <SunIcon
+        data-toggle-button-icon={THEME_MODE.WHITE}
+        class={[
+          currentThemeMode !== THEME.LIGHT ? 'hidden' : '',
+          'h-6',
+        ].join(' ')}
+      />
+      <MoonIcon
+        data-toggle-button-icon={THEME_MODE.DARK}
+        class={[
+          currentThemeMode !== THEME.DARK ? 'hidden' : '',
+          'h-6',
+        ].join(' ')}
+      />
     </button>
     {Object.entries(themes).map(([mode, theme]) => {
       const { Icon, code } = theme
@@ -69,17 +84,37 @@ const currentTheme = currentThemeMode === THEME.LIGHT
   import type { Menu } from 'src/utils/menu'
 
   class ThemeMenuDropdown extends HTMLElement {
+    updateToggleIcon (themeMode: THEME_MODE) {
+      const menuToggleButtonIcons = this.querySelectorAll('svg[data-toggle-button-icon]')
+      menuToggleButtonIcons.forEach((icon) => {
+        const iconThemeMode = icon.getAttribute('data-toggle-button-icon')
+        if (iconThemeMode === themeMode.toString()) {
+          icon.classList.remove('hidden')
+        } else {
+          icon.classList.add('hidden')
+        }
+      })
+    }
+
     constructor () {
       super()
 
       const menuItemButtons = this.querySelectorAll<HTMLButtonElement>('button[data-dropdown-item]')
       const menu = this.querySelector<Menu>('menu-dropdown')
+
       menuItemButtons.forEach((button) => {
         button.addEventListener('click', () => {
           const themeMode = button.getAttribute('aria-label')
-          if (themeMode === THEME_MODE.DARK.toString()) setDarkTheme()
-          else if (themeMode === THEME_MODE.WHITE.toString()) setLightTheme()
-          else removeTheme()
+          if (themeMode === THEME_MODE.DARK.toString()) {
+            this.updateToggleIcon(THEME_MODE.DARK)
+            setDarkTheme()
+          } else if (themeMode === THEME_MODE.WHITE.toString()) {
+            this.updateToggleIcon(THEME_MODE.WHITE)
+            setLightTheme()
+          } else {
+            this.updateToggleIcon(THEME_MODE.SYSTEM)
+            removeTheme()
+          }
           menu?.hideDropdown()
         })
       })

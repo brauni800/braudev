@@ -15,19 +15,16 @@ export const themeSwitcher = () => {
 }
 
 export const setLightTheme = () => {
-  // window.localStorage.setItem(THEME_COOKIE_KEY, THEME.LIGHT)
   Cookie.set(THEME_COOKIE_KEY, THEME.LIGHT)
   themeSwitcher()
 }
 
 export const setDarkTheme = () => {
-  // window.localStorage.setItem(THEME_COOKIE_KEY, THEME.DARK)
   Cookie.set(THEME_COOKIE_KEY, THEME.DARK)
   themeSwitcher()
 }
 
 export const removeTheme = () => {
-  // window.localStorage.removeItem(THEME_COOKIE_KEY)
   Cookie.remove(THEME_COOKIE_KEY)
   themeSwitcher()
 }
