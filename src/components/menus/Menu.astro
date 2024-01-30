@@ -6,7 +6,7 @@ interface Props {
 const { align = 'left' } = Astro.props
 ---
 
-<astro-menu class='relative inline-block'>
+<menu-dropdown class='relative inline-block'>
   <div class="flex transition-filter hover:brightness-75">
     <slot name="toggle-button"/>
   </div>
@@ -18,31 +18,10 @@ const { align = 'left' } = Astro.props
   >
     <slot />
   </ul>
-</astro-menu>
+</menu-dropdown>
 
 <script>
-  class Menu extends HTMLElement {
-    constructor () {
-      super()
+  import { Menu } from "src/utils/menu"
 
-      const toggleButton = this.querySelector('button')
-      const dropdown = this.querySelector('ul')
-
-      toggleButton?.addEventListener('click', () => {
-        if (Boolean(dropdown?.classList.contains('hidden')) || Boolean(dropdown?.classList.contains('animate-fade-out'))) {
-          dropdown?.classList.remove('hidden')
-          dropdown?.classList.remove('animate-fade-out')
-        } else {
-          dropdown?.classList.add('animate-fade-out')
-        }
-      })
-
-      window.addEventListener('click', (event) => {
-        if (!toggleButton?.contains(event.target as Node) && !dropdown?.contains(event.target as Node)) {
-          dropdown?.classList.add('animate-fade-out')
-        }
-      })
-    }
-  }
-  customElements.define('astro-menu', Menu)
+  customElements.define('menu-dropdown', Menu)
 </script>

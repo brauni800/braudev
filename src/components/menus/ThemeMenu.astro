@@ -34,24 +34,24 @@ const currentTheme = currentThemeMode === THEME.LIGHT
     : themes[THEME_MODE.SYSTEM]
 ---
 
-<Menu align='right'>
-  <button
-    class='flex items-center justify-center'
-    title={t('theme.button.label')}
-    slot="toggle-button"
-    aria-label='theme'
-  >
-    <currentTheme.Icon class='h-6'/>
-  </button>
-  <theme-menu-dropdown>
+<theme-menu-dropdown>
+  <Menu align='right'>
+    <button
+      class='flex items-center justify-center'
+      title={t('theme.button.label')}
+      slot="toggle-button"
+      aria-label='theme'
+    >
+      <currentTheme.Icon class='h-6'/>
+    </button>
     {Object.entries(themes).map(([mode, theme]) => {
       const { Icon, code } = theme
       return (
         <li>
           <button
             class='flex w-full items-center justify-start gap-2 rounded-md px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700'
+            data-dropdown-item
             aria-label={mode}
-            data-menu-list
           >
             <Icon class="h-6"/>
             <span>{t(code as TranslationKeyProp)}</span>
@@ -59,24 +59,28 @@ const currentTheme = currentThemeMode === THEME.LIGHT
         </li>
       )
     })}
-  </theme-menu-dropdown>
-</Menu>
+  </Menu>
+</theme-menu-dropdown>
 
 <script>
   import { setDarkTheme, setLightTheme, removeTheme } from 'src/utils/theme-switcher'
   import { THEME_MODE } from 'src/types/theme.type'
 
+  import type { Menu } from 'src/utils/menu'
+
   class ThemeMenuDropdown extends HTMLElement {
     constructor () {
       super()
 
-      const menuItemButtons = this.querySelectorAll<HTMLButtonElement>('button[data-menu-list]')
+      const menuItemButtons = this.querySelectorAll<HTMLButtonElement>('button[data-dropdown-item]')
+      const menu = this.querySelector<Menu>('menu-dropdown')
       menuItemButtons.forEach((button) => {
         button.addEventListener('click', () => {
           const themeMode = button.getAttribute('aria-label')
           if (themeMode === THEME_MODE.DARK.toString()) setDarkTheme()
           else if (themeMode === THEME_MODE.WHITE.toString()) setLightTheme()
           else removeTheme()
+          menu?.hideDropdown()
         })
       })
     }
