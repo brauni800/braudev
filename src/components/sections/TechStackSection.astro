@@ -1,0 +1,53 @@
+---
+import AmplifyIcon from "src/assets/icons/technologies/AmplifyIcon.astro"
+import AngularIcon from "src/assets/icons/technologies/AngularIcon.astro"
+import AstroIcon from "src/assets/icons/technologies/AstroIcon.astro"
+import FigmaIcon from "src/assets/icons/technologies/FigmaIcon.astro"
+import GitIcon from "src/assets/icons/technologies/GitIcon.astro"
+import MongoDBIcon from "src/assets/icons/technologies/MongoDBIcon.astro"
+import MySQLIcon from "src/assets/icons/technologies/MySQLIcon.astro"
+import NextJSIcon from "src/assets/icons/technologies/NextJSIcon.astro"
+import NodeIcon from "src/assets/icons/technologies/NodeIcon.astro"
+import ReactIcon from "src/assets/icons/technologies/ReactIcon.astro"
+import TailwindIcon from "src/assets/icons/technologies/TailwindIcon.astro"
+import TypeScriptIcon from "src/assets/icons/technologies/TypeScriptIcon.astro"
+import VercelIcon from "src/assets/icons/technologies/VercelIcon.astro"
+import VueIcon from "src/assets/icons/technologies/VueIcon.astro"
+
+const techStack = [
+  { "name": "React", "Icon": ReactIcon, "bigger": true },
+  { "name": "Vue", "Icon": VueIcon },
+  { "name": "Astro", "Icon": AstroIcon, "large": true },
+  { "name": "Angular", "Icon": AngularIcon },
+  { "name": "Next.js", "Icon": NextJSIcon },
+  { "name": "Git", "Icon": GitIcon },
+  { "name": "Tailwind", "Icon": TailwindIcon },
+  { "name": "Node", "Icon": NodeIcon, "large": true },
+  { "name": "Figma", "Icon": FigmaIcon },
+  { "name": "MySQL", "Icon": MySQLIcon },
+  { "name": "MongoDB", "Icon": MongoDBIcon },
+  { "name": "Vercel", "Icon": VercelIcon },
+  { "name": "AWS Amplify", "Icon": AmplifyIcon },
+  { "name": "TypeScript", "Icon": TypeScriptIcon, "large": true },
+]
+---
+
+<section class="mx-auto mb-24 max-w-5xl">
+  <h2 class="mx-4 mb-8 text-balance text-4xl text-bright-turquoise-700 dark:text-bright-turquoise-400">
+    Tech Stack
+  </h2>
+  <div class="grid cursor-default auto-rows-[192px] grid-cols-2 gap-4 p-4 sm:grid-flow-dense sm:grid-cols-3 md:grid-cols-5">
+    {techStack.map(({ name, bigger, large, Icon }) => (
+      <div
+        class:list={[
+          'group relative row-span-1 flex items-center justify-center overflow-hidden rounded-xl border-2 border-slate-400/10 bg-gray-200 p-4 dark:bg-gray-700',
+          { 'sm:col-span-2 sm:row-span-2': bigger },
+          { 'sm:col-span-2': large }
+        ]}
+      >
+        <Icon class="h-full transition-all group-hover:scale-125 group-hover:blur-sm group-hover:brightness-125 dark:group-hover:brightness-75"/>
+        <span class="absolute text-center font-bold text-gray-700 opacity-0 transition-opacity [font-size:_clamp(1rem,0.7865853658536586rem+1.2195121951219512vw,2.25rem)] [text-shadow:0_0_5px_white] group-hover:opacity-100 dark:text-gray-50 dark:[text-shadow:0_0_5px_rgb(55_65_81/1)]">{name}</span>
+      </div>
+    ))}
+  </div>
+</section>
