@@ -20,7 +20,7 @@ export const en = {
   'section.experience.dacodes.description.2': 'I collaborated on eight diverse projects, utilizing technologies like React.js, Vue.js, and Angular based on the specific needs of each project.',
   'section.experience.dacodes.description.3': 'My focus was on creating attractive and functional user interfaces, contributing to the end-user experience, and working collaboratively with a multifunctional team to achieve success in each development.',
   'section.about-me.title': 'About me',
-  'section.about-me.1': '',
-  'section.about-me.2': '',
-  'section.about-me.3': ''
+  'section.about-me.paragraph.1': 'I love anime and video games. I\'ve always been good at mathematics and since I was young I\'ve been passionate about physics and astronomy 🚀.',
+  'section.about-me.paragraph.2': 'In my second year of high school, I decided to study software engineering thanks to my love for video games 🎮. During college, I explored different areas such as video games and cybersecurity, but in the end I focused on web development 👨‍💻, specifically front-end, where I discovered my true passion.',
+  'section.about-me.paragraph.3': 'My journey in web development has been exciting 🥳, and I\'m eager to continue exploring new possibilities and sharing my enthusiasm for web creation.'
 }

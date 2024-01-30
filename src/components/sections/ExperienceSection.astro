@@ -37,14 +37,14 @@ const t = useTranslations(lang)
             <p class="mb-3 text-base font-bold text-bright-turquoise-700 dark:text-bright-turquoise-400">
               {format(experience.start_date, 'PP')} - {format(experience.end_date, 'PP')}
             </p>
-            <h3 class="mb-3 text-lg font-bold md:text-2xl">{experience.name}</h3>
-            <p class="mb-2 text-pretty text-sm leading-snug text-opacity-100 md:text-base">
+            <h3 class="mb-3 text-xl font-bold md:text-2xl">{experience.name}</h3>
+            <p class="mb-2 text-pretty text-lg leading-snug text-opacity-100 md:text-base">
               {t(`${experience.description}.1` as TranslationKeyProp)}
             </p>
-            <p class="mb-2 text-pretty text-sm leading-snug text-opacity-100 md:text-base">
+            <p class="mb-2 text-pretty text-lg leading-snug text-opacity-100 md:text-base">
               {t(`${experience.description}.2` as TranslationKeyProp)}
             </p>
-            <p class="text-pretty text-sm leading-snug text-opacity-100 md:text-base">
+            <p class="text-pretty text-lg leading-snug text-opacity-100 md:text-base">
               {t(`${experience.description}.3` as TranslationKeyProp)}
             </p>
           </div>

@@ -1,12 +1,31 @@
 ---
 import { getLangFromURL, useTranslations } from "src/i18n"
+import { Image } from "astro:assets"
+
+import jollyRogerImage from "src/assets/images/jolly-roger.webp"
 
 const lang = getLangFromURL(Astro.url)
 const t = useTranslations(lang)
 ---
 
 <section>
-  <div class="mx-auto h-96 max-w-7xl px-10">
-    <h2 class="text-center text-4xl">{t('section.about-me.title')}</h2>
+  <div class="mx-auto my-24 max-w-3xl text-pretty px-10 text-center [&>p]:mb-4 [&>p]:text-xl">
+    <Image
+      class="relative -z-10 float-right -mr-28 mt-24 aspect-square w-52 rotate-12 opacity-60 [shape-outside:url(/src/assets/images/jolly-roger.webp)] dark:brightness-75 sm:mt-12 sm:w-56"
+      src={jollyRogerImage}
+      alt="jolly-roger"
+    />
+    <h2 class="mb-10 text-center text-4xl">
+      {t('section.about-me.title')}
+    </h2>
+    <p>
+      {t('section.about-me.paragraph.1')}
+    </p>
+    <p>
+      {t('section.about-me.paragraph.2')}
+    </p>
+    <p>
+      {t('section.about-me.paragraph.3')}
+    </p>
   </div>
 </section>
