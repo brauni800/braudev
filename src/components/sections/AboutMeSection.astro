@@ -8,7 +8,7 @@ const lang = getLangFromURL(Astro.url)
 const t = useTranslations(lang)
 ---
 
-<section>
+<section class="overflow-hidden">
   <div class="mx-auto max-w-3xl text-pretty px-10 text-right [&>p]:mb-4 [&>p]:text-xl">
     <Image
       class="relative -z-10 float-right -mr-28 mt-24 aspect-square w-52 rotate-12 animate-swing opacity-60 [shape-outside:url(/src/assets/images/jolly-roger.webp)] dark:brightness-75 sm:mt-12 sm:w-56"
