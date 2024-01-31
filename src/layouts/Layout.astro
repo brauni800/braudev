@@ -1,6 +1,6 @@
 ---
 // import "patter.css/dist/pattern.min.css"
-import { getLangFromURL } from 'src/i18n'
+import { getLangFromURL, useTranslations } from 'src/i18n'
 
 interface Props {
 	title: string;
@@ -8,13 +8,14 @@ interface Props {
 
 const { title } = Astro.props
 const lang = getLangFromURL(Astro.url)
+const t = useTranslations(lang)
 ---
 
 <!doctype html>
 <html lang={lang}>
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
+		<meta name="description" content={t('section.hero.about-me.2')} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
