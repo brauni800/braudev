@@ -8,6 +8,7 @@ interface Props {
 const { title } = Astro.props
 const lang = getLangFromURL(Astro.url)
 const t = useTranslations(lang)
+const url = 'https://brau.dev'
 ---
 
 <!doctype html>
@@ -23,21 +24,19 @@ const t = useTranslations(lang)
 		<meta name="description" content={t('section.hero.about-me.2')}>
 
 		<!-- Facebook Meta Tags -->
-		<meta property="og:url" content="https://brau.dev">
+		<meta property="og:url" content={url}>
 		<meta property="og:type" content="website">
 		<meta property="og:title" content={title}>
 		<meta property="og:description" content={t('section.hero.about-me.2')}>
-		<meta property="og:image" content="https://opengraph.b-cdn.net/production/documents/05046265-54bf-4f11-a3e4-4dd503d3a525.png?token=XvmtRJ-MTYGlel6ZpDtmlTN-hc83bL6Snv8RdJwx4sY&height=600&width=600&expires=33245310441">
+		<meta property="og:image" content={url + '/hero-banner.webp'}>
 
 		<!-- Twitter Meta Tags -->
 		<meta name="twitter:card" content="summary_large_image">
 		<meta property="twitter:domain" content="brau.dev">
-		<meta property="twitter:url" content="https://brau.dev">
+		<meta property="twitter:url" content={url}>
 		<meta name="twitter:title" content={title}>
 		<meta name="twitter:description" content={t('section.hero.about-me.2')}>
-		<meta name="twitter:image" content="https://opengraph.b-cdn.net/production/documents/05046265-54bf-4f11-a3e4-4dd503d3a525.png?token=XvmtRJ-MTYGlel6ZpDtmlTN-hc83bL6Snv8RdJwx4sY&height=600&width=600&expires=33245310441">
-
-		<!-- Meta Tags Generated via https://www.opengraph.xyz -->
+		<meta name="twitter:image" content={url + '/hero-banner.webp'}>
 	</head>
 	<body class="overflow-x-hidden bg-gray-50 text-gray-800 transition-colors dark:bg-gray-800 dark:text-gray-50">
 		<div class="heropattern-bubbles-inherit/10">
